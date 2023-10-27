@@ -9,7 +9,7 @@ struct MealView: View {
         ScrollView{
             VStack{
                 ForEach(vm.meals){ meal in
-                    Text(meal.strMeal)
+                    MealCellView(meal:meal)
                 }
             }
         }

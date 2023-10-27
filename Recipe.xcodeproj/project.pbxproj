@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C013D4B2AEC0231006615E4 /* MealCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C013D4A2AEC0231006615E4 /* MealCellView.swift */; };
 		2CB090992AEB842100EFEA71 /* MealDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB090982AEB842100EFEA71 /* MealDataService.swift */; };
 		2CB0909C2AEB867A00EFEA71 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0909B2AEB867A00EFEA71 /* MealViewModel.swift */; };
 		2CB0909E2AEB8DA000EFEA71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0909D2AEB8DA000EFEA71 /* ContentView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C013D4A2AEC0231006615E4 /* MealCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCellView.swift; sourceTree = "<group>"; };
 		2CB090982AEB842100EFEA71 /* MealDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataService.swift; sourceTree = "<group>"; };
 		2CB0909B2AEB867A00EFEA71 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		2CB0909D2AEB8DA000EFEA71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				2CC1384D2AEB4083009A9BC4 /* MealView.swift */,
 				2CB0909B2AEB867A00EFEA71 /* MealViewModel.swift */,
+				2C013D4A2AEC0231006615E4 /* MealCellView.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC1384E2AEB4083009A9BC4 /* MealView.swift in Sources */,
+				2C013D4B2AEC0231006615E4 /* MealCellView.swift in Sources */,
 				2CB0909C2AEB867A00EFEA71 /* MealViewModel.swift in Sources */,
 				2CB0909E2AEB8DA000EFEA71 /* ContentView.swift in Sources */,
 				2CC138772AEB65D5009A9BC4 /* Meal.swift in Sources */,
