@@ -3,10 +3,14 @@
 import SwiftUI
 
 @main
-struct RecipeApp: App {
+struct RecipeApp: App, MealViewDelegate {
+    func makeMealView() -> MealView {
+        MealView(vm: MealViewModel(dessertProvider: MealDataServie()))
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(delegate: self)
         }
     }
 }

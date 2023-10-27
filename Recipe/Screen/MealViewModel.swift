@@ -7,13 +7,15 @@ class MealViewModel: ObservableObject {
 
     @Published var meals: [Meal] = []
     var cancellables = Set<AnyCancellable>()
+    let dessertProvider: DessertProvider
 
-    init() {
+    init(dessertProvider: DessertProvider) {
+        self.dessertProvider = dessertProvider
         loadMeals()
     }
 
     private func loadMeals() {
-        MealDataServie.instance.getData()
+        MealDataServie.instance.getDesserts()
             .sink { _ in
 
             } receiveValue: { [weak self] returnedMeals in
@@ -22,4 +24,8 @@ class MealViewModel: ObservableObject {
             .store(in: &cancellables)
 
     }
+}
+
+protocol DessertProvider {
+    func getDesserts() -> AnyPublisher<[Meal], Error>
 }

@@ -3,19 +3,21 @@
 import Foundation
 import Combine
 
-class MealDataServie {
+class MealDataServie: DessertProvider {
 
     static let instance = MealDataServie()
 
-    let url: URL = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!
-
-    func getData() -> AnyPublisher<[Meal], Error> {
+    static func getData<T:Codable>(url: URL) -> AnyPublisher<T, Error> {
 
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
-            .decode(type: MealsResponse.self, decoder: JSONDecoder())
-            .map(\.meals)
+            .decode(type: T.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+
+    func getDesserts() -> AnyPublisher<[Meal], Error> {
+        let mealResponse: AnyPublisher<MealsResponse, Error> = MealDataServie.getData(url: URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!)
+        return mealResponse.map(\.meals).eraseToAnyPublisher()
     }
 }

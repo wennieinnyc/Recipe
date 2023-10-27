@@ -2,12 +2,20 @@
 
 import SwiftUI
 
+protocol MealViewDelegate {
+    func makeMealView() -> MealView
+}
+
 struct ContentView: View {
+    let delegate: MealViewDelegate?
     var body: some View {
-        MealView()
+        if delegate != nil{
+            delegate!.makeMealView()
+        }
+
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(delegate: nil)
 }

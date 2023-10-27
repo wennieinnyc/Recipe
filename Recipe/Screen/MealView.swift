@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct MealView: View {
-    @StateObject private var vm = MealViewModel()
+    @ObservedObject var vm : MealViewModel
 
     var body: some View {
         ScrollView{
@@ -17,5 +17,5 @@ struct MealView: View {
 }
 
 #Preview {
-    MealView()
+    MealView(vm: MealViewModel(dessertProvider: MealDataServie()))
 }
