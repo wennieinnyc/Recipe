@@ -3,14 +3,14 @@
 import SwiftUI
 
 protocol MealViewDelegate {
-    func makeMealView() -> MealView
+    func makeDessertView() -> DessertView
 }
 
 struct ContentView: View {
     let delegate: MealViewDelegate?
     var body: some View {
         if delegate != nil{
-            delegate!.makeMealView()
+            delegate!.makeDessertView()
         }
 
     }

@@ -3,9 +3,9 @@
 import Foundation
 import Combine
 
-class MealDataServie: DessertProvider {
+class MealDataService: DessertProvider {
 
-    static let instance = MealDataServie()
+    static let instance = MealDataService()
 
     static func getData<T:Codable>(url: URL) -> AnyPublisher<T, Error> {
 
@@ -17,7 +17,8 @@ class MealDataServie: DessertProvider {
     }
 
     func getDesserts() -> AnyPublisher<[Meal], Error> {
-        let mealResponse: AnyPublisher<MealsResponse, Error> = MealDataServie.getData(url: URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!)
+        let mealResponse: AnyPublisher<MealsResponse, Error> = MealDataService.getData(url: URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert")!)
         return mealResponse.map(\.meals).eraseToAnyPublisher()
     }
 }
+

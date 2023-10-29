@@ -6,6 +6,7 @@ import Combine
 class MealViewModel: ObservableObject {
 
     @Published var meals: [Meal] = []
+
     var cancellables = Set<AnyCancellable>()
     let dessertProvider: DessertProvider
 
@@ -15,14 +16,13 @@ class MealViewModel: ObservableObject {
     }
 
     private func loadMeals() {
-        MealDataServie.instance.getDesserts()
+        MealDataService.instance.getDesserts()
             .sink { _ in
 
             } receiveValue: { [weak self] returnedMeals in
                 self?.meals = returnedMeals
             }
             .store(in: &cancellables)
-
     }
 }
 
