@@ -4,6 +4,11 @@ import SwiftUI
 
 struct MealCellView: View {
     let meal: Meal
+    let imageSize: CGFloat = 100
+    let cornerRadius: CGFloat = 8.0
+    let padding: CGFloat = 10
+
+
     var body: some View {
 
         HStack{
@@ -15,9 +20,9 @@ struct MealCellView: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .cornerRadius(8.0)
-                        .frame(width: 100, height: 100)
-                        .padding(10)
+                        .cornerRadius(cornerRadius)
+                        .frame(width: imageSize, height: imageSize)
+                        .padding(padding)
                 case .failure:
                     Text("Failed to load image")
                 @unknown default:

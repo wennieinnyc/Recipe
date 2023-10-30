@@ -57,7 +57,7 @@ struct Recipe: Codable, Identifiable {
     let strImageSource: String?
     let strCreativeCommonsConfirmed: String?
     let dateModified: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case idMeal
         case strMeal
@@ -113,14 +113,61 @@ struct Recipe: Codable, Identifiable {
         case strCreativeCommonsConfirmed
         case dateModified
     }
+    
+    func getIngrediatnsAndMeasures() -> [(String, String)]{
+        
+        var ingredientsAndMeasures: [String: String] = [:]
+        let mirror = Swift.Mirror(reflecting: self)
+        
+        for child in mirror.children{
+            guard let ingredientCandidate =  child.label else { continue }
+            if ingredientCandidate.contains("Ingredient"){
+                let splitted = ingredientCandidate.split(separator: "Ingredient")
+                var ingredientNumber: String = ""
+                if splitted.count == 2{
+                    ingredientNumber = String(splitted[1])
+                }
+                //Find a Measure with the same number
+                for child2 in mirror.children{
+                    guard let measureCandidate =  child2.label else { continue }
+                    if measureCandidate.contains("Measure"){
+                        let splitted = measureCandidate.split(separator: "Measure")
+                        var measureNumber: String = ""
+                        if splitted.count == 2{
+                            measureNumber = String(splitted[1])
+                        }
+                        //Add measures and ingredients to dictionalry
+                        if ingredientNumber == measureNumber{
+                            if let ingredient = child.value as? String, let measure = child2.value as? String {
+                                if (child.value as! String).trimmingCharacters(in: .whitespacesAndNewlines).count > 0{
+                                    ingredientsAndMeasures[ingredient] = measure
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+        return sortDictionaryToTuples(ingredientsAndMeasures)
+    }
+    
+    func sortDictionaryToTuples(_ dict: [String: String]) -> [(String, String)] {
+        let sortedKeys = dict.keys.sorted()
+        var tupleArray: [(String, String)] = []
+        for key in sortedKeys {
+            if let value = dict[key] {
+                tupleArray.append((key, value))
+            }
+        }
+        return tupleArray
+    }
 }
 
 struct RecipeResponse: Codable {
     let meals: [Recipe]
 }
 
-func stringsIntoDictionary() {
-    
-}
 
 
