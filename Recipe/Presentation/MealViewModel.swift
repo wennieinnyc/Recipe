@@ -16,7 +16,7 @@ class MealViewModel: ObservableObject {
     }
 
     private func loadMeals() {
-        MealDataService.instance.getDesserts()
+        dessertProvider.getDesserts()
             .sink { _ in
 
             } receiveValue: { [weak self] returnedMeals in

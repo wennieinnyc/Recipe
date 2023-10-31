@@ -1,6 +1,7 @@
 //Created by Wennie
 
 import SwiftUI
+import Combine
 
 struct MealView: View {
     @ObservedObject var vm : MealViewModel
@@ -42,5 +43,12 @@ struct MealImage: View{
 }
 
 #Preview {
-    MealView(vm: MealViewModel(dessertProvider: MealDataService()))
+    MealView(vm: MealViewModel(dessertProvider: PreviewDessertProvider()))
+}
+
+struct PreviewDessertProvider : DessertProvider {
+    func getDesserts() -> AnyPublisher<[Meal], Error> {
+        Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+    }
+
 }
