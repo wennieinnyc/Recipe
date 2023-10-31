@@ -3,16 +3,21 @@
 import SwiftUI
 import Combine
 
+protocol MealViewFactoryDelegate {
+    func makeRecipeView(idMeal: String) -> AnyView
+}
+
 struct MealView: View {
     @ObservedObject var vm : MealViewModel
-
+    
+    let factory: MealViewFactoryDelegate
     var body: some View {
         NavigationView {
             ScrollView{
                 VStack{
                     ForEach(vm.meals){ meal in
                         NavigationLink {
-                            RecipeView(id:meal.idMeal, vm: RecipeViewModel())
+                            factory.makeRecipeView(idMeal: meal.idMeal)
                         } label: {
                             MealCellView(meal:meal)
                         }
@@ -43,7 +48,7 @@ struct MealImage: View{
 }
 
 #Preview {
-    MealView(vm: MealViewModel(dessertProvider: PreviewDessertProvider()))
+    MealView(vm: MealViewModel(dessertProvider: PreviewDessertProvider()), factory: PreviceMealViewFactory())
 }
 
 struct PreviewDessertProvider : DessertProvider {
@@ -51,4 +56,10 @@ struct PreviewDessertProvider : DessertProvider {
         Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 
+}
+
+struct PreviceMealViewFactory: PreviceMealViewFactory {
+    func makeRecipeView(idMeal: String) -> AnyView {
+        AnyView.init(erasing: Text("a"))
+    }
 }

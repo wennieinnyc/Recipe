@@ -6,11 +6,10 @@ import Combine
 class RecipeViewModel: ObservableObject {
 
     @Published var recipe: Recipe?
-    let idMeal: String = ""
 
     var cancellables = Set<AnyCancellable>()
 
-    init() {
+    init(idMeal: String) {
         getRecipe(idMeal: idMeal)
     }
 

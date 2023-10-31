@@ -4,7 +4,6 @@ import SwiftUI
 
 struct RecipeView: View {
 
-    let id: String
     @ObservedObject var vm : RecipeViewModel
 
     var body: some View {
@@ -29,9 +28,6 @@ struct RecipeView: View {
         }
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
 
-        .onAppear {
-            vm.getRecipe(idMeal: id)
-        }
     }
 
 
@@ -39,5 +35,5 @@ struct RecipeView: View {
 
 
 #Preview {
-    RecipeView(id: "1", vm: RecipeViewModel())
+    RecipeView(vm: RecipeViewModel(idMeal: "1"))
 }
