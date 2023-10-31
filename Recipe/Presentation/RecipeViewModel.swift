@@ -8,13 +8,15 @@ class RecipeViewModel: ObservableObject {
     @Published var recipe: Recipe?
 
     var cancellables = Set<AnyCancellable>()
+    let recipeProvider: RecipeProvider
 
-    init(idMeal: String) {
+    init(idMeal: String, recipeProvider: RecipeProvider) {
+        self.recipeProvider = recipeProvider
         getRecipe(idMeal: idMeal)
     }
 
     func getRecipe(idMeal: String) {
-        RecipeDataService.instance.getRecipe(idMeal: idMeal)
+        recipeProvider.getRecipe(idMeal: idMeal)
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .finished:

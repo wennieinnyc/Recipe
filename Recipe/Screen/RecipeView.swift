@@ -1,6 +1,7 @@
 //Created by Wennie
 
 import SwiftUI
+import Combine
 
 struct RecipeView: View {
 
@@ -35,5 +36,11 @@ struct RecipeView: View {
 
 
 #Preview {
-    RecipeView(vm: RecipeViewModel(idMeal: "1"))
+    RecipeView(vm: RecipeViewModel(idMeal: "1", recipeProvider: PreviewRecipeProvider()))
+}
+
+struct PreviewRecipeProvider : RecipeProvider {
+    func getRecipe(idMeal: String) -> AnyPublisher<[Recipe], Error> {
+        Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+    }
 }

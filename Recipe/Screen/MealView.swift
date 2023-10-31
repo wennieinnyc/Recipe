@@ -3,14 +3,14 @@
 import SwiftUI
 import Combine
 
-protocol MealViewFactoryDelegate {
+protocol MealViewFactory {
     func makeRecipeView(idMeal: String) -> AnyView
 }
 
 struct MealView: View {
     @ObservedObject var vm : MealViewModel
     
-    let factory: MealViewFactoryDelegate
+    let factory: MealViewFactory
     var body: some View {
         NavigationView {
             ScrollView{
@@ -29,24 +29,6 @@ struct MealView: View {
     }
 }
 
-struct MealImage: View{
-    var mealImage: String
-    var body: some View{
-        AsyncImage(url: URL(string: mealImage)) { phase in
-            if let image = phase.image {
-                image.resizable()
-                    .scaledToFit()
-                    .clipped()
-                    .cornerRadius(5)
-            } else if phase.error != nil {
-                Color.gray
-            } else {
-                ProgressView()
-            }
-        }
-    }
-}
-
 #Preview {
     MealView(vm: MealViewModel(dessertProvider: PreviewDessertProvider()), factory: PreviceMealViewFactory())
 }
@@ -55,10 +37,9 @@ struct PreviewDessertProvider : DessertProvider {
     func getDesserts() -> AnyPublisher<[Meal], Error> {
         Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
-
 }
 
-struct PreviceMealViewFactory: PreviceMealViewFactory {
+struct PreviceMealViewFactory: MealViewFactory {
     func makeRecipeView(idMeal: String) -> AnyView {
         AnyView.init(erasing: Text("a"))
     }

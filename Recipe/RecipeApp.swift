@@ -3,15 +3,20 @@
 import SwiftUI
 
 @main
-struct RecipeApp: App, MealViewFactoryDelegate {
+struct RecipeApp: App, ContentViewFactory, MealViewFactory {
     func makeMealView() -> MealView {
-        MealView(vm: MealViewModel(dessertProvider: MealDataService()), factory: )
+        MealView(vm: MealViewModel(dessertProvider: MealDataService()), factory: self )
     }
-    
+
+    func makeRecipeView(idMeal: String) -> AnyView {
+        AnyView (erasing: RecipeView(vm: RecipeViewModel(idMeal: idMeal, recipeProvider: RecipeDataService())))
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView(delegate: self)
+            ContentView(factory: self)
         }
     }
 }
+
 
