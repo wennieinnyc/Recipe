@@ -2,19 +2,19 @@
 
 import SwiftUI
 
-protocol MealViewFactory {
+protocol ContentViewFactory {
+    func makeMealView() -> MealView
 }
 
 struct ContentView: View {
-    let delegate: MealViewFactoryDelegate?
+    let factory: ContentViewFactory?
     var body: some View {
-        if delegate != nil{
-            delegate!.makeMealView()
+        if factory != nil{
+            factory!.makeMealView()
         }
-
     }
 }
 
 #Preview {
-    ContentView(delegate: nil)
+    ContentView(factory: nil)
 }
