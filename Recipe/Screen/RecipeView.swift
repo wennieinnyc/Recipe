@@ -8,67 +8,36 @@ struct RecipeView: View {
     @ObservedObject var vm : RecipeViewModel
 
     var body: some View {
-            VStack {
-                Text(id)
-                Text(vm.recipe?.strArea ?? "")
-                createTableView(ingredientsAndMeasures: vm.recipe?.getIngrediatnsAndMeasures() ?? [("","")])
-                .onAppear {
-                    vm.getRecipe(idMeal: id)
+        ScrollView{
+            VStack(spacing: 10) {
+                if let mealImage = vm.recipe?.strMealThumb{
+                    MealImageView(mealImage: mealImage, imageSize: 250, cornerRadius: 0, padding: 5)
                 }
-            }
-        }
-    func createTableView(ingredientsAndMeasures: [(String, String)]) -> some View {
-           let rows = ingredientsAndMeasures.map { key, value in TableRow(name: key, value: value) }
-           return Table(rows: rows) { row in
-               HStack {
-                   Text(row.name)
-                   Text(row.value)
-               }
-           }
-       }
-}
+                Text(vm.recipe?.strMeal ?? "")
+                    .font(.system(size: 25)).bold()
 
-struct MealImage: View{
-    var mealImage: String
-    var body: some View{
-        AsyncImage(url: URL(string: mealImage)) { phase in
-            if let image = phase.image {
-                image.resizable()
-                    .scaledToFit()
-                    .clipped()
-                    .cornerRadius(5)
-            } else if phase.error != nil {
-                Color.gray
-            } else {
-                ProgressView()
+
+                if let instructions = vm.recipe?.strInstructions {
+                    let paragraphs = vm.recipe?.splitTextIntoParagraphs(instructions) ?? []
+                    InstructionsView(instructions: paragraphs, title: "Instructions")
+                }
+
+                IngredientsAndMeasuresTableView(title: "Ingredients", ingredientsAndMeasures: vm.recipe?.getIngrediatnsAndMeasures() ?? [("","")])
+
             }
+
+        }
+        .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
+
+        .onAppear {
+            vm.getRecipe(idMeal: id)
         }
     }
-}
-/**
-    Represents a single row in a table view. It conforms to the Identifiable protocol, which means that it has a unique identifier property called id. The id property is initialized to a new UUID value by default.
- */
-struct TableRow: Identifiable {
-    var id = UUID()
-    let name: String
-    let value: String
-}
-/**
-    View that constructs and displays generic conten based on TableRow object provided
- */
-struct Table<Content: View>: View {
-    let rows: [TableRow]
-    let content: (TableRow) -> Content
 
-    var body: some View {
-        VStack(alignment: .leading){
-            ForEach(rows) { row in
-                content(row)
-                    .font(.caption.weight(.light))
-            }
-        }
-    }
+
 }
+
+
 #Preview {
     RecipeView(id: "1", vm: RecipeViewModel())
 }

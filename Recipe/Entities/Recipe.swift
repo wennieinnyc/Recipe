@@ -57,7 +57,7 @@ struct Recipe: Codable, Identifiable {
     let strImageSource: String?
     let strCreativeCommonsConfirmed: String?
     let dateModified: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case idMeal
         case strMeal
@@ -113,12 +113,12 @@ struct Recipe: Codable, Identifiable {
         case strCreativeCommonsConfirmed
         case dateModified
     }
-    
+
     func getIngrediatnsAndMeasures() -> [(String, String)]{
-        
+
         var ingredientsAndMeasures: [String: String] = [:]
         let mirror = Swift.Mirror(reflecting: self)
-        
+
         for child in mirror.children{
             guard let ingredientCandidate =  child.label else { continue }
             if ingredientCandidate.contains("Ingredient"){
@@ -148,11 +148,9 @@ struct Recipe: Codable, Identifiable {
                 }
             }
         }
-        
-        
         return sortDictionaryToTuples(ingredientsAndMeasures)
     }
-    
+
     func sortDictionaryToTuples(_ dict: [String: String]) -> [(String, String)] {
         let sortedKeys = dict.keys.sorted()
         var tupleArray: [(String, String)] = []
@@ -162,6 +160,12 @@ struct Recipe: Codable, Identifiable {
             }
         }
         return tupleArray
+    }
+
+    func splitTextIntoParagraphs(_ text: String) -> [String] {
+        let paragraphs = text.components(separatedBy: "\r\n")
+        let nonEmptyParagraphs = paragraphs.filter { !$0.isEmpty }
+        return nonEmptyParagraphs
     }
 }
 

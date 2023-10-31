@@ -1,7 +1,6 @@
 //Created by Wennie
 
 import Foundation
-import Combine
 
 struct Meal: Codable, Identifiable {
     var id: String = UUID().uuidString

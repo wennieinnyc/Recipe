@@ -20,12 +20,10 @@ class MealViewModel: ObservableObject {
             .sink { _ in
 
             } receiveValue: { [weak self] returnedMeals in
-                self?.meals = returnedMeals
+                self?.meals = returnedMeals.sorted { $0.strMeal.lowercased() < $1.strMeal.lowercased()}
             }
             .store(in: &cancellables)
     }
 }
 
-protocol DessertProvider {
-    func getDesserts() -> AnyPublisher<[Meal], Error>
-}
+

@@ -4,31 +4,10 @@ import SwiftUI
 
 struct MealCellView: View {
     let meal: Meal
-    let imageSize: CGFloat = 100
-    let cornerRadius: CGFloat = 8.0
-    let padding: CGFloat = 10
-
-
     var body: some View {
 
         HStack{
-            AsyncImage(url: URL(string: meal.strMealThumb)) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView()
-                case let .success(image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .cornerRadius(cornerRadius)
-                        .frame(width: imageSize, height: imageSize)
-                        .padding(padding)
-                case .failure:
-                    Text("Failed to load image")
-                @unknown default:
-                    Text("Unknown state")
-                }
-            }
+            MealImageView(mealImage: meal.strMealThumb, imageSize: 100, cornerRadius: 8, padding: 10)
             Text(meal.strMeal)
             Spacer()
         }

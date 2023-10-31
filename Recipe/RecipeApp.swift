@@ -4,8 +4,8 @@ import SwiftUI
 
 @main
 struct RecipeApp: App, MealViewDelegate {
-    func makeDessertView() -> DessertView {
-        DessertView(vm: MealViewModel(dessertProvider: MealDataService()))
+    func makeMealView() -> MealView {
+        MealView(vm: MealViewModel(dessertProvider: MealDataService()))
     }
     
     var body: some Scene {
