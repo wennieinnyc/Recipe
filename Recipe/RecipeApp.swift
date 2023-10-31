@@ -9,7 +9,7 @@ struct RecipeApp: App, ContentViewFactory, MealViewFactory {
     }
 
     func makeRecipeView(idMeal: String) -> AnyView {
-        AnyView (erasing: RecipeView(vm: RecipeViewModel(idMeal: idMeal)))
+        AnyView (erasing: RecipeView(vm: RecipeViewModel(idMeal: idMeal, recipeProvider: RecipeDataService())))
     }
 
     var body: some Scene {

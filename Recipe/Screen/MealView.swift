@@ -37,7 +37,6 @@ struct PreviewDessertProvider : DessertProvider {
     func getDesserts() -> AnyPublisher<[Meal], Error> {
         Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
-
 }
 
 struct PreviceMealViewFactory: MealViewFactory {
