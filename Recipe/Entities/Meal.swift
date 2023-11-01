@@ -1,4 +1,4 @@
-//Created by Wennie
+// Created by Wennie
 
 import Foundation
 
@@ -18,7 +18,3 @@ struct Meal: Codable, Identifiable {
 struct MealsResponse: Codable {
     let meals: [Meal]
 }
-
-
-
-

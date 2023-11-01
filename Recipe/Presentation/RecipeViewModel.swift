@@ -1,10 +1,9 @@
-//Created by Wennie
+// Created by Wennie
 
-import Foundation
 import Combine
+import Foundation
 
 class RecipeViewModel: ObservableObject {
-
     @Published var recipe: Recipe?
 
     var cancellables = Set<AnyCancellable>()
@@ -18,17 +17,16 @@ class RecipeViewModel: ObservableObject {
     func getRecipe(idMeal: String) {
         recipeProvider.getRecipe(idMeal: idMeal)
             .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        print("Error: \(error)")
-                }
-            },
-                receiveValue: { [weak self] returnedRecipe in
-                self?.recipe = returnedRecipe.first
-            })
+                      switch completion {
+                      case .finished:
+                          break
+                      case let .failure(error):
+                          print("Error: \(error)")
+                      }
+                  },
+                  receiveValue: { [weak self] returnedRecipe in
+                      self?.recipe = returnedRecipe.first
+                  })
             .store(in: &cancellables)
     }
-    
 }

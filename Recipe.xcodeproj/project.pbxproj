@@ -27,7 +27,7 @@
 		2CDE2DF12AF0D6AD00CAB148 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF02AF0D6AD00CAB148 /* InstructionsView.swift */; };
 		2CDE2DF32AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF22AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift */; };
 		2CDE2DF72AF1363300CAB148 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF62AF1363300CAB148 /* Providers.swift */; };
-		2CDE2DF92AF1372900CAB148 /* HTTPsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF82AF1372900CAB148 /* HTTPsService.swift */; };
+		2CDE2DF92AF1372900CAB148 /* HttpsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF82AF1372900CAB148 /* HttpsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,7 @@
 		2CDE2DF02AF0D6AD00CAB148 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		2CDE2DF22AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsAndMeasuresTableView.swift; sourceTree = "<group>"; };
 		2CDE2DF62AF1363300CAB148 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
-		2CDE2DF82AF1372900CAB148 /* HTTPsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPsService.swift; sourceTree = "<group>"; };
+		2CDE2DF82AF1372900CAB148 /* HttpsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +104,7 @@
 			children = (
 				2CB090982AEB842100EFEA71 /* MealDataService.swift */,
 				2C013D502AEC9C83006615E4 /* RecipeDataService.swift */,
-				2CDE2DF82AF1372900CAB148 /* HTTPsService.swift */,
+				2CDE2DF82AF1372900CAB148 /* HttpsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC1384E2AEB4083009A9BC4 /* MealView.swift in Sources */,
-				2CDE2DF92AF1372900CAB148 /* HTTPsService.swift in Sources */,
+				2CDE2DF92AF1372900CAB148 /* HttpsService.swift in Sources */,
 				2C013D4B2AEC0231006615E4 /* MealCellView.swift in Sources */,
 				2CB0909C2AEB867A00EFEA71 /* MealViewModel.swift in Sources */,
 				2CDE2DF32AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift in Sources */,

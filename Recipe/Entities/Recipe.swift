@@ -1,4 +1,4 @@
-//Created by Wennie
+// Created by Wennie
 
 import Foundation
 
@@ -114,32 +114,31 @@ struct Recipe: Codable, Identifiable {
         case dateModified
     }
 
-    func getIngrediatnsAndMeasures() -> [(String, String)]{
-
+    func getIngrediatnsAndMeasures() -> [(String, String)] {
         var ingredientsAndMeasures: [String: String] = [:]
         let mirror = Swift.Mirror(reflecting: self)
 
-        for child in mirror.children{
-            guard let ingredientCandidate =  child.label else { continue }
-            if ingredientCandidate.contains("Ingredient"){
+        for child in mirror.children {
+            guard let ingredientCandidate = child.label else { continue }
+            if ingredientCandidate.contains("Ingredient") {
                 let splitted = ingredientCandidate.split(separator: "Ingredient")
-                var ingredientNumber: String = ""
-                if splitted.count == 2{
+                var ingredientNumber = ""
+                if splitted.count == 2 {
                     ingredientNumber = String(splitted[1])
                 }
-                //Find a Measure with the same number
-                for child2 in mirror.children{
-                    guard let measureCandidate =  child2.label else { continue }
-                    if measureCandidate.contains("Measure"){
+                // Find a Measure with the same number
+                for child2 in mirror.children {
+                    guard let measureCandidate = child2.label else { continue }
+                    if measureCandidate.contains("Measure") {
                         let splitted = measureCandidate.split(separator: "Measure")
-                        var measureNumber: String = ""
-                        if splitted.count == 2{
+                        var measureNumber = ""
+                        if splitted.count == 2 {
                             measureNumber = String(splitted[1])
                         }
-                        //Add measures and ingredients to dictionalry
-                        if ingredientNumber == measureNumber{
+                        // Add measures and ingredients to dictionalry
+                        if ingredientNumber == measureNumber {
                             if let ingredient = child.value as? String, let measure = child2.value as? String {
-                                if (child.value as! String).trimmingCharacters(in: .whitespacesAndNewlines).count > 0{
+                                if (child.value as! String).trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
                                     ingredientsAndMeasures[ingredient] = measure
                                 }
                             }
@@ -172,6 +171,3 @@ struct Recipe: Codable, Identifiable {
 struct RecipeResponse: Codable {
     let meals: [Recipe]
 }
-
-
-

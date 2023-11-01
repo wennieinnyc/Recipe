@@ -1,17 +1,15 @@
-//Created by Wennie
+// Created by Wennie
 
 import SwiftUI
 
 struct MealCellView: View {
     let meal: Meal
     var body: some View {
-
-        HStack{
+        HStack {
             MealImageView(mealImage: meal.strMealThumb, imageSize: 100, cornerRadius: 8, padding: 10)
             Text(meal.strMeal)
             Spacer()
         }
-
     }
 }
 

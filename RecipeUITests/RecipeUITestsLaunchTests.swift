@@ -1,9 +1,8 @@
-//Created by Wennie
+// Created by Wennie
 
 import XCTest
 
 final class RecipeUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

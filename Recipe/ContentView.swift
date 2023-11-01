@@ -1,4 +1,4 @@
-//Created by Wennie
+// Created by Wennie
 
 import SwiftUI
 
@@ -9,7 +9,7 @@ protocol ContentViewFactory {
 struct ContentView: View {
     let factory: ContentViewFactory?
     var body: some View {
-        if factory != nil{
+        if factory != nil {
             factory!.makeMealView()
         }
     }

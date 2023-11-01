@@ -1,4 +1,4 @@
-//Created by Wennie
+// Created by Wennie
 
 import SwiftUI
 
@@ -12,16 +12,15 @@ struct InstructionsView: View {
                 .foregroundColor(.primary)
                 .font(.system(size: 20))
                 .bold()
-            ForEach(Array(instructions.enumerated()), id: \.offset) { index, instruction in
 
+            ForEach(Array(instructions.enumerated()), id: \.offset) { index, instruction in
                 Text("Step \(index + 1)").underline().padding(.vertical, 5)
                 Text(instruction)
-
             }
         }
     }
 }
 
 #Preview {
-    InstructionsView(instructions:[""], title: "Instructions")
+    InstructionsView(instructions: [""], title: "Instructions")
 }
