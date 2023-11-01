@@ -38,6 +38,13 @@ struct TableRowView: View {
     }
 }
 
-// #Preview {
-//    IngredientsAndMeasuresTableView(ingredientsAndMeasures: [(:)])
-// }
+#Preview {
+    IngredientsAndMeasuresTableView(
+        title: "Ingredients",
+        ingredientsAndMeasures: [
+            ("Ingredient 1", "100g"),
+            ("Ingredient 2", "200g"),
+            ("Ingredient 3", "50g")
+        ]
+    )
+}

@@ -66,11 +66,11 @@ final class RecipeTests: XCTestCase {
         cancellable.cancel()
     }
 
-    func test_getRecipe_mealNameEqualTo_BakewellTart() {
+    func test_getRecipe_mealName_equalToBakewellTart() {
         let recipeService = RecipeDataService()
         let idMeal = "52767"
 
-        let expectation = self.expectation(description: "Recipe retrieval")
+        let expectation = self.expectation(description: "Get the correct recipe with the dessert name: Bakewell tart")
 
         var receivedDessertNameOfRecipes: String?
 
@@ -90,6 +90,65 @@ final class RecipeTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
 
         XCTAssertEqual(receivedDessertNameOfRecipes, "Bakewell tart")
+
+        cancellable.cancel()
+    }
+
+    func test_getRecipe_ingredientsCount_equalToNine() {
+        let recipeService = RecipeDataService()
+        let idMeal = "52768"
+
+        let expectation = self.expectation(description: "Get the recipe with correct ingredient counts")
+
+        var count: Int?
+
+        let cancellable = recipeService.getRecipe(idMeal: idMeal)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break // Test successful completion
+                case .failure:
+                    XCTFail("Unexpected error")
+                }
+                expectation.fulfill()
+            }, receiveValue: { recipes in
+                count = recipes.first?.getIngrediatnsAndMeasures().count
+            })
+
+        waitForExpectations(timeout: 5, handler: nil)
+
+        XCTAssertEqual(count, 9)
+
+        cancellable.cancel()
+    }
+
+    func test_getRecipe_fourthIngredient_equalToAlmonds_measurement_equalTo50g() {
+        let recipeService = RecipeDataService()
+        let idMeal = "52894"
+
+        let expectation = self.expectation(description: "Get the recipe with correct ingredient information")
+
+        var ingredient: String?
+        var measurement: String?
+
+        let cancellable = recipeService.getRecipe(idMeal: idMeal)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break // Test successful completion
+                case .failure:
+                    XCTFail("Unexpected error")
+                }
+                expectation.fulfill()
+            }, receiveValue: { recipes in
+                ingredient = recipes.first?.strIngredient4
+                measurement = recipes.first?.strMeasure4
+            })
+
+        waitForExpectations(timeout: 5, handler: nil)
+
+        XCTAssertEqual(ingredient, "Almonds")
+        XCTAssertEqual(measurement, "50g")
 
         cancellable.cancel()
     }
