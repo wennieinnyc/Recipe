@@ -1,4 +1,4 @@
-//Created by Wennie
+// Created by Wennie
 
 import SwiftUI
 
@@ -7,24 +7,22 @@ struct MealImageView: View {
     let imageSize: CGFloat
     let cornerRadius: CGFloat
     let padding: CGFloat
-    var body: some View{
+    var body: some View {
         AsyncImage(url: URL(string: mealImage)) { phase in
             if let image = phase.image {
                 image.resizable()
                     .scaledToFit()
                     .clipped()
                     .cornerRadius(cornerRadius)
-                                       .frame(width: imageSize, height: imageSize)
-                                       .padding(padding)
+                    .frame(width: imageSize, height: imageSize)
+                    .padding(padding)
             } else if phase.error != nil {
                 Color.gray
             } else {
                 ProgressView()
             }
         }
-
     }
-
 }
 
 #Preview {

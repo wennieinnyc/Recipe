@@ -1,4 +1,4 @@
-//Created by Wennie
+// Created by Wennie
 
 import SwiftUI
 
@@ -7,7 +7,7 @@ struct IngredientsAndMeasuresTableView: View {
     let ingredientsAndMeasures: [(String, String)]
 
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             Text(title)
                 .foregroundColor(.primary)
                 .font(.system(size: 20))
@@ -38,6 +38,6 @@ struct TableRowView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    IngredientsAndMeasuresTableView(ingredientsAndMeasures: [(:)])
-//}
+// }

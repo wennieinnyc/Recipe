@@ -1,10 +1,9 @@
-//Created by Wennie
+// Created by Wennie
 
-import Foundation
 import Combine
+import Foundation
 
 class MealViewModel: ObservableObject {
-
     @Published var meals: [Meal] = []
 
     var cancellables = Set<AnyCancellable>()
@@ -16,14 +15,12 @@ class MealViewModel: ObservableObject {
     }
 
     private func loadMeals() {
-        dessertProvider.getDesserts()
+        dessertProvider.getMeals()
             .sink { _ in
 
             } receiveValue: { [weak self] returnedMeals in
-                self?.meals = returnedMeals.sorted { $0.strMeal.lowercased() < $1.strMeal.lowercased()}
+                self?.meals = returnedMeals.sorted { $0.strMeal.lowercased() < $1.strMeal.lowercased() }
             }
             .store(in: &cancellables)
     }
 }
-
-

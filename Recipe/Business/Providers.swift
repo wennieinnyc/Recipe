@@ -1,10 +1,10 @@
-//Created by Wennie
+// Created by Wennie
 
-import Foundation
 import Combine
+import Foundation
 
 protocol DessertProvider {
-    func getDesserts() -> AnyPublisher<[Meal], Error>
+    func getMeals() -> AnyPublisher<[Meal], Error>
 }
 
 protocol RecipeProvider {

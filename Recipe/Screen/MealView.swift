@@ -1,31 +1,30 @@
-//Created by Wennie
+// Created by Wennie
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 protocol MealViewFactory {
     func makeRecipeView(idMeal: String) -> AnyView
 }
 
 struct MealView: View {
-    @ObservedObject var vm : MealViewModel
-    
+    @ObservedObject var vm: MealViewModel
+
     let factory: MealViewFactory
     var body: some View {
         NavigationView {
-            ScrollView{
-                VStack{
-                    ForEach(vm.meals){ meal in
+            ScrollView {
+                VStack {
+                    ForEach(vm.meals) { meal in
                         NavigationLink {
                             factory.makeRecipeView(idMeal: meal.idMeal)
                         } label: {
-                            MealCellView(meal:meal)
+                            MealCellView(meal: meal)
                         }
                     }
                 }
             }
         }
-
     }
 }
 
@@ -33,14 +32,14 @@ struct MealView: View {
     MealView(vm: MealViewModel(dessertProvider: PreviewDessertProvider()), factory: PreviceMealViewFactory())
 }
 
-struct PreviewDessertProvider : DessertProvider {
-    func getDesserts() -> AnyPublisher<[Meal], Error> {
+struct PreviewDessertProvider: DessertProvider {
+    func getMeals() -> AnyPublisher<[Meal], Error> {
         Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 }
 
 struct PreviceMealViewFactory: MealViewFactory {
-    func makeRecipeView(idMeal: String) -> AnyView {
-        AnyView.init(erasing: Text("a"))
+    func makeRecipeView(idMeal _: String) -> AnyView {
+        AnyView(erasing: Text("a"))
     }
 }

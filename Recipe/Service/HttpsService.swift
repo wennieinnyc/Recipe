@@ -1,12 +1,10 @@
-//Created by Wennie
+// Created by Wennie
 
-import Foundation
 import Combine
+import Foundation
 
-struct HTTPsService  {
-
-    static func getData<T:Codable>(url: URL) -> AnyPublisher<T, Error> {
-
+struct HttpsService {
+    static func getData<T: Codable>(url: URL) -> AnyPublisher<T, Error> {
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: T.self, decoder: JSONDecoder())
