@@ -166,6 +166,3 @@ struct Recipe: Codable, Identifiable {
     }
 }
 
-struct RecipeResponse: Codable {
-    let meals: [Recipe]
-}

@@ -15,6 +15,4 @@ struct Meal: Codable, Identifiable {
     }
 }
 
-struct MealsResponse: Codable {
-    let meals: [Meal]
-}
+
