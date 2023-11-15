@@ -126,6 +126,7 @@ struct Recipe: Codable, Identifiable {
                 if splitted.count == 2 {
                     ingredientNumber = String(splitted[1])
                 }
+                // Find a Measure with the same number
                 for child2 in mirror.children {
                     guard let measureCandidate = child2.label else { continue }
                     if measureCandidate.contains("Measure") {
@@ -134,6 +135,7 @@ struct Recipe: Codable, Identifiable {
                         if splitted.count == 2 {
                             measureNumber = String(splitted[1])
                         }
+                        // Add measures and ingredients to dictionalry
                         if ingredientNumber == measureNumber {
                             if let ingredient = child.value as? String, let measure = child2.value as? String {
                                 if (child.value as! String).trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
