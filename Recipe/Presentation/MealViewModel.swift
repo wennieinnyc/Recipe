@@ -6,8 +6,8 @@ import Foundation
 class MealViewModel: ObservableObject {
     @Published var meals: [Meal] = []
 
-    var cancellables = Set<AnyCancellable>()
-    let dessertProvider: DessertProvider
+    private var cancellables = Set<AnyCancellable>()
+    private let dessertProvider: DessertProvider
 
     init(dessertProvider: DessertProvider) {
         self.dessertProvider = dessertProvider

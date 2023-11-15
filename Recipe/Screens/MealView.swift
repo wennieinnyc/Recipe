@@ -3,14 +3,14 @@
 import Combine
 import SwiftUI
 
-protocol MealViewFactory {
+protocol MealViewMaker {
     func makeRecipeView(idMeal: String) -> AnyView
 }
 
 struct MealView: View {
     @ObservedObject var vm: MealViewModel
 
-    let factory: MealViewFactory
+    let factory: MealViewMaker
     var body: some View {
         NavigationView {
             ScrollView {
@@ -38,7 +38,7 @@ struct PreviewDessertProvider: DessertProvider {
     }
 }
 
-struct PreviceMealViewFactory: MealViewFactory {
+struct PreviceMealViewFactory: MealViewMaker {
     func makeRecipeView(idMeal _: String) -> AnyView {
         AnyView(erasing: Text("a"))
     }

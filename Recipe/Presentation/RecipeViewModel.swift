@@ -14,7 +14,8 @@ class RecipeViewModel: ObservableObject {
         getRecipe(idMeal: idMeal)
     }
 
-    func getRecipe(idMeal: String) {
+    private func getRecipe(idMeal: String) {
+
         recipeProvider.getRecipe(idMeal: idMeal)
             .sink(receiveCompletion: { completion in
                       switch completion {

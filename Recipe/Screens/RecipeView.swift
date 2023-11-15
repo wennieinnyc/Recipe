@@ -20,7 +20,7 @@ struct RecipeView: View {
                     InstructionsView(instructions: paragraphs, title: "Instructions")
                 }
 
-                IngredientsAndMeasuresTableView(title: "Ingredients", ingredientsAndMeasures: vm.recipe?.getIngrediatnsAndMeasures() ?? [("", "")])
+                IngredientsAndMeasuresTableView(title: "Ingredients", ingredientsAndMeasures: vm.recipe?.getIngrediantsAndMeasures() ?? [("", "")])
             }
         }
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))

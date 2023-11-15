@@ -2,12 +2,12 @@
 
 import SwiftUI
 
-protocol ContentViewFactory {
+protocol ContentViewMaker {
     func makeMealView() -> MealView
 }
 
 struct ContentView: View {
-    let factory: ContentViewFactory?
+    let factory: ContentViewMaker?
     var body: some View {
         if factory != nil {
             factory!.makeMealView()
