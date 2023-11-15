@@ -3,7 +3,7 @@
 import Combine
 import Foundation
 
-struct HttpsService {
+struct URLSessionHttpsService: HttpsService {
     func getData<T: Codable>(url: URL) -> AnyPublisher<T, Error> {
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
@@ -12,3 +12,5 @@ struct HttpsService {
             .eraseToAnyPublisher()
     }
 }
+
+

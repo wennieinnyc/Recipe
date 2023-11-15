@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Recipe: Codable, Identifiable {
+struct Recipe: Codable, Identifiable, Equatable {
     var id: String = UUID().uuidString
     let idMeal: String
     let strMeal: String?
@@ -114,7 +114,7 @@ struct Recipe: Codable, Identifiable {
         case dateModified
     }
 
-    func getIngrediatnsAndMeasures() -> [(String, String)] {
+    func getIngrediantsAndMeasures() -> [(String, String)] {
         var ingredientsAndMeasures: [String: String] = [:]
         let mirror = Swift.Mirror(reflecting: self)
 

@@ -19,7 +19,6 @@
 		2CC1384E2AEB4083009A9BC4 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC1384D2AEB4083009A9BC4 /* MealView.swift */; };
 		2CC138502AEB4087009A9BC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC1384F2AEB4087009A9BC4 /* Assets.xcassets */; };
 		2CC138532AEB4087009A9BC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC138522AEB4087009A9BC4 /* Preview Assets.xcassets */; };
-		2CC1385D2AEB4087009A9BC4 /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC1385C2AEB4087009A9BC4 /* RecipeTests.swift */; };
 		2CC138672AEB4087009A9BC4 /* RecipeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC138662AEB4087009A9BC4 /* RecipeUITests.swift */; };
 		2CC138692AEB4087009A9BC4 /* RecipeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC138682AEB4087009A9BC4 /* RecipeUITestsLaunchTests.swift */; };
 		2CC138772AEB65D5009A9BC4 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC138762AEB65D5009A9BC4 /* Meal.swift */; };
@@ -30,7 +29,8 @@
 		2CDE2DF12AF0D6AD00CAB148 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF02AF0D6AD00CAB148 /* InstructionsView.swift */; };
 		2CDE2DF32AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF22AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift */; };
 		2CDE2DF72AF1363300CAB148 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF62AF1363300CAB148 /* Providers.swift */; };
-		2CDE2DF92AF1372900CAB148 /* HttpsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF82AF1372900CAB148 /* HttpsService.swift */; };
+		2CDE2DF92AF1372900CAB148 /* URLSessionHttpsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE2DF82AF1372900CAB148 /* URLSessionHttpsService.swift */; };
+		2CEBB8182B055F0600A695E5 /* RecipeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEBB8172B055F0600A695E5 /* RecipeViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,6 @@
 		2CC1384F2AEB4087009A9BC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC138522AEB4087009A9BC4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CC138582AEB4087009A9BC4 /* RecipeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CC1385C2AEB4087009A9BC4 /* RecipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
 		2CC138622AEB4087009A9BC4 /* RecipeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC138662AEB4087009A9BC4 /* RecipeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeUITests.swift; sourceTree = "<group>"; };
 		2CC138682AEB4087009A9BC4 /* RecipeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -77,7 +76,8 @@
 		2CDE2DF02AF0D6AD00CAB148 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		2CDE2DF22AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsAndMeasuresTableView.swift; sourceTree = "<group>"; };
 		2CDE2DF62AF1363300CAB148 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
-		2CDE2DF82AF1372900CAB148 /* HttpsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsService.swift; sourceTree = "<group>"; };
+		2CDE2DF82AF1372900CAB148 /* URLSessionHttpsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHttpsService.swift; sourceTree = "<group>"; };
+		2CEBB8172B055F0600A695E5 /* RecipeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			children = (
 				2CB090982AEB842100EFEA71 /* MealDataService.swift */,
 				2C013D502AEC9C83006615E4 /* RecipeDataService.swift */,
-				2CDE2DF82AF1372900CAB148 /* HttpsService.swift */,
+				2CDE2DF82AF1372900CAB148 /* URLSessionHttpsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -184,8 +184,8 @@
 		2CC1385B2AEB4087009A9BC4 /* RecipeTests */ = {
 			isa = PBXGroup;
 			children = (
-				2CC1385C2AEB4087009A9BC4 /* RecipeTests.swift */,
 				2CC8A3FE2AFAA2D500280FD5 /* MealViewModelTests.swift */,
+				2CEBB8172B055F0600A695E5 /* RecipeViewModelTests.swift */,
 			);
 			path = RecipeTests;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC1384E2AEB4083009A9BC4 /* MealView.swift in Sources */,
-				2CDE2DF92AF1372900CAB148 /* HttpsService.swift in Sources */,
+				2CDE2DF92AF1372900CAB148 /* URLSessionHttpsService.swift in Sources */,
 				2C013D4B2AEC0231006615E4 /* MealCellView.swift in Sources */,
 				2CB0909C2AEB867A00EFEA71 /* MealViewModel.swift in Sources */,
 				2CDE2DF32AF0EB6000CAB148 /* IngredientsAndMeasuresTableView.swift in Sources */,
@@ -381,7 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CC1385D2AEB4087009A9BC4 /* RecipeTests.swift in Sources */,
+				2CEBB8182B055F0600A695E5 /* RecipeViewModelTests.swift in Sources */,
 				2CC8A3FF2AFAA2D500280FD5 /* MealViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

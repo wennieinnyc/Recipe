@@ -13,6 +13,6 @@ struct MealViewFactory: MealViewMaker {
     }
 
     private func makeRecipeProvider() -> RecipeProvider {
-        RecipeDataService(HttpsService: HttpsService())
+        RecipeDataService(HttpsService: URLSessionHttpsService())
     }
 }

@@ -4,15 +4,29 @@ import Combine
 import Foundation
 
 struct RecipeDataService: RecipeProvider {
-    let httpsService: HttpsService
+    let httpsService: URLSessionHttpsService
 
-    init(HttpsService: HttpsService) {
+    init(HttpsService: URLSessionHttpsService) {
         self.httpsService = HttpsService
     }
+    private let baseURL = "https://themealdb.com/api/json/v1/1/lookup.php"
 
     func getRecipe(idMeal: String) -> AnyPublisher<[Recipe], Error> {
-        let recipeResponse: AnyPublisher<RecipeResponse, Error> = httpsService.getData(url: URL(string: "https://themealdb.com/api/json/v1/1/lookup.php?i=\(idMeal)")!)
+        guard let url = makeURL(with: idMeal) else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+
+        let recipeResponse: AnyPublisher<RecipeResponse, Error> = httpsService.getData(url: url)
         return recipeResponse.map(\.meals).eraseToAnyPublisher()
+    }
+
+    private func makeURL(with idMeal: String) -> URL? {
+        var urlComponents = URLComponents(string: baseURL)
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "i", value: idMeal)
+        ]
+
+        return urlComponents?.url
     }
 }
 

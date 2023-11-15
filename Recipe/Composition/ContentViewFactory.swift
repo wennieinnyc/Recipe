@@ -11,6 +11,6 @@ struct ContentViewFactory : ContentViewMaker {
     }
 
     private func makeDessertProvider() -> DessertProvider {
-        MealDataService(HttpsService: HttpsService())
+        MealDataService(HttpsService: URLSessionHttpsService())
     }
 }
