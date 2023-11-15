@@ -49,12 +49,10 @@ Ensure Xcode 15.0+ is installed. Download the project files from the repository,
 
 ## Architecture:
 Utilizes the MVVM architectural pattern in conjunction with Combine for streamlined API calls, bolstering testability, readability, and flexibility. Generics are employed to simplify code structure, while protocols enhance adaptability within the system.
-- Main branch: Follows the clean architecture
-- MVVM architecture branch: Utilizes the MVVM architecture
+- Main Branch: Follows the clean + MVVM architecture
 
 ## Tests:
-Includes tests for basic API functionality, with plans for more tests in future releases.
-
+Includes tests for view models.
 
 ## API:
 This app uses TheMealDb REST API for dessert recipes.
