@@ -12,6 +12,10 @@
 		2C013D4F2AEC264D006615E4 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C013D4E2AEC264D006615E4 /* Recipe.swift */; };
 		2C013D512AEC9C83006615E4 /* RecipeDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C013D502AEC9C83006615E4 /* RecipeDataService.swift */; };
 		2C013D532AEDBD41006615E4 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C013D522AEDBD41006615E4 /* RecipeViewModel.swift */; };
+		2C1DFF6B2B162D490057C6CC /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 2C1DFF6A2B162D490057C6CC /* OHHTTPStubs */; };
+		2C1DFF6D2B162D490057C6CC /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C1DFF6C2B162D490057C6CC /* OHHTTPStubsSwift */; };
+		2C1DFF6F2B162D740057C6CC /* MealDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1DFF6E2B162D740057C6CC /* MealDataServiceTests.swift */; };
+		2C923DF42B332C8F0013DA51 /* MealsJsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C1DFF702B16367D0057C6CC /* MealsJsonResponse.json */; };
 		2CB090992AEB842100EFEA71 /* MealDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB090982AEB842100EFEA71 /* MealDataService.swift */; };
 		2CB0909C2AEB867A00EFEA71 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0909B2AEB867A00EFEA71 /* MealViewModel.swift */; };
 		2CB0909E2AEB8DA000EFEA71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0909D2AEB8DA000EFEA71 /* ContentView.swift */; };
@@ -56,6 +60,8 @@
 		2C013D4E2AEC264D006615E4 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		2C013D502AEC9C83006615E4 /* RecipeDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataService.swift; sourceTree = "<group>"; };
 		2C013D522AEDBD41006615E4 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		2C1DFF6E2B162D740057C6CC /* MealDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataServiceTests.swift; sourceTree = "<group>"; };
+		2C1DFF702B16367D0057C6CC /* MealsJsonResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealsJsonResponse.json; sourceTree = "<group>"; };
 		2CB090982AEB842100EFEA71 /* MealDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDataService.swift; sourceTree = "<group>"; };
 		2CB0909B2AEB867A00EFEA71 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		2CB0909D2AEB8DA000EFEA71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1DFF6B2B162D490057C6CC /* OHHTTPStubs in Frameworks */,
+				2C1DFF6D2B162D490057C6CC /* OHHTTPStubsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +194,8 @@
 			children = (
 				2CC8A3FE2AFAA2D500280FD5 /* MealViewModelTests.swift */,
 				2CEBB8172B055F0600A695E5 /* RecipeViewModelTests.swift */,
+				2C1DFF6E2B162D740057C6CC /* MealDataServiceTests.swift */,
+				2C1DFF702B16367D0057C6CC /* MealsJsonResponse.json */,
 			);
 			path = RecipeTests;
 			sourceTree = "<group>";
@@ -260,6 +270,10 @@
 				2CC1385A2AEB4087009A9BC4 /* PBXTargetDependency */,
 			);
 			name = RecipeTests;
+			packageProductDependencies = (
+				2C1DFF6A2B162D490057C6CC /* OHHTTPStubs */,
+				2C1DFF6C2B162D490057C6CC /* OHHTTPStubsSwift */,
+			);
 			productName = RecipeTests;
 			productReference = 2CC138582AEB4087009A9BC4 /* RecipeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -314,6 +328,9 @@
 				Base,
 			);
 			mainGroup = 2CC1383F2AEB4083009A9BC4;
+			packageReferences = (
+				2C1DFF692B162D490057C6CC /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+			);
 			productRefGroup = 2CC138492AEB4083009A9BC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C923DF42B332C8F0013DA51 /* MealsJsonResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1DFF6F2B162D740057C6CC /* MealDataServiceTests.swift in Sources */,
 				2CEBB8182B055F0600A695E5 /* RecipeViewModelTests.swift in Sources */,
 				2CC8A3FF2AFAA2D500280FD5 /* MealViewModelTests.swift in Sources */,
 			);
@@ -704,6 +723,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C1DFF692B162D490057C6CC /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C1DFF6A2B162D490057C6CC /* OHHTTPStubs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C1DFF692B162D490057C6CC /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubs;
+		};
+		2C1DFF6C2B162D490057C6CC /* OHHTTPStubsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C1DFF692B162D490057C6CC /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CC138402AEB4083009A9BC4 /* Project object */;
 }

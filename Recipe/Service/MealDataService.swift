@@ -17,7 +17,7 @@ class MealDataService: DessertProvider {
         let mealResponse: AnyPublisher<MealsResponse, Error> = httpsService.getData(url: mealUrl)
         return mealResponse.map(\.meals).eraseToAnyPublisher()
     }
-}
+} 
 
 struct MealsResponse: Codable {
     let meals: [Meal]
